@@ -5,7 +5,7 @@ from .core.config import settings
 from .api.api import router as api_router
 app = FastAPI()
 
-DB_URL = f"mongodb://{settings.DATABASE_HOSTNAME}:{settings.DATABASE_PORT}"
+DB_URL = f"mongodb://{settings.DATABASE_HOSTNAME}"
 
 ALLOWED_HOSTS = ["*"]
 app.add_middleware(

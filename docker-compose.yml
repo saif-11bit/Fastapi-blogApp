@@ -3,8 +3,14 @@ services:
   app:
     build: .
     ports:
-      -"80:80"
-    env_file: .env
+      - "80:80"
+    environment:
+      - DATABASE_HOSTNAME=db
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALGORITHM=${ALGORITHM}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
     depends_on:
       - db
 
@@ -12,6 +18,9 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-    env_file: .env
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
     volumes:
       - ./data:/data/db
