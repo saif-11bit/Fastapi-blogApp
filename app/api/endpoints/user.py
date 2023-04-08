@@ -18,8 +18,8 @@ router = APIRouter(prefix='/users', tags=['User'])
 
 
 @router.get("/", response_model=List[UserInResponse])
-async def get_all_users(request: Request):
-    users = await get_all_users_in_db(request)
+async def get_all_users(request: Request, offset: int = 0, limit: int = 10):
+    users = await get_all_users_in_db(request, offset, limit)
     return users
 
 

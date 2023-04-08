@@ -7,15 +7,10 @@ from typing import List
 from bson import ObjectId
 
 
-async def get_all_users_in_db(request: Request) -> List[UserInDB]:
-    users = [doc async for doc in request.app.mongodb['users'].find()]
-    # for doc in await request.app.mongodb["users"].find().to_list(1000):
-    #     users.append(
-    #         UserInDB(
-    #             **doc
-    #         )
-    #     )
-    
+async def get_all_users_in_db(request: Request, \
+    offset: int, limit: int) -> List[UserInDB]:
+    users = [doc async for doc in request.app.mongodb['users'].find(limit=limit, skip=offset)]
+
     return users
 
 async def get_user_by_username(request: Request, username: str) -> UserInDB:

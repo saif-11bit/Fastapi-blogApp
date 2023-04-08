@@ -20,8 +20,10 @@ router = APIRouter(prefix='/posts', tags=['Post'])
 
 
 @router.get('/', response_model=List[PostInResponse])
-async def get_all_posts(request: Request):
-    posts = await list_of_posts_in_db(request) 
+async def get_all_posts(request: Request, \
+    offset: int = 0,
+    limit: int = 10):
+    posts = await list_of_posts_in_db(request, limit, offset) 
     return posts
 
 
