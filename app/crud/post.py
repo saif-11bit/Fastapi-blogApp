@@ -16,12 +16,6 @@ from bson import ObjectId
 async def list_of_posts_in_db(
     request: Request, limit: int, offset: int) -> List[PostInDB]:
     posts = [doc async for doc in request.app.mongodb['posts'].find(limit=limit, skip=offset)]
-    # for doc in await request.app.mongodb["posts"].find().to_list(1000):
-    #     posts.append(
-    #         PostInDB(
-    #             **doc
-    #         )
-    #     )
     
     return posts
 
