@@ -2,6 +2,7 @@ version: '3.8'
 services:
   app:
     build: .
+    image: saif11bit/blogapp
     ports:
       - "80:80"
     environment:
@@ -23,4 +24,12 @@ services:
       - DATABASE_PORT=${DATABASE_PORT}
       - DATABASE_NAME=${DATABASE_NAME}
     volumes:
-      - ./data:/data/db
+      - mydata:/mount/testvolumes
+
+
+volumes:
+  mydata:
+    driver: azure_file
+    driver_opts:
+      share_name: testvolume
+      storage_account_name: mysharestore
