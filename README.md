@@ -1,5 +1,6 @@
 # Fastapi-blogApp
 Fastapi + MongoDB
+
 Hosted on azure
 ### http://20.246.225.249/docs
 
@@ -10,6 +11,7 @@ Hosted on azure
 
 ## User API
 /users (get) - retrieve all users  default offset: 0  and limit: 10
+
 /users/{id} (get) - retrieve user by id
 
 ## Post API
@@ -25,4 +27,5 @@ Hosted on azure
 
 ## Comment API
 /posts/{id}/comments - (get) get all comments on post using post id
+
 /posts/{id}/comments - (post) to add comment on post using post id
